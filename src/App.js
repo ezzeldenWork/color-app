@@ -1,12 +1,14 @@
 import React, {Component} from "react";
 import Palette from "./Palette";
 import seedColors from "./seedColors";
+import {genetatrPalette} from "./colorHelpers";
 
 export class App extends Component {
   render() {
+    console.log(genetatrPalette(seedColors[2]));
     return (
       <div>
-        <Palette {...seedColors[4]} />
+        <Palette {...seedColors[2]} />
       </div>
     );
   }
