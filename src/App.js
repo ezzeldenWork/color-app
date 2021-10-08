@@ -5,10 +5,9 @@ import {genetatrPalette} from "./colorHelpers";
 
 export class App extends Component {
   render() {
-    console.log(genetatrPalette(seedColors[2]));
     return (
       <div>
-        <Palette {...seedColors[2]} />
+        <Palette palette={genetatrPalette(seedColors[2])} />
       </div>
     );
   }
