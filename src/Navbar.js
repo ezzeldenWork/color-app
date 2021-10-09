@@ -8,6 +8,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import "./Navbar.css";
+import {Link} from "react-router-dom";
 export class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -16,7 +17,7 @@ export class Navbar extends Component {
     this.closeSnakebar = this.closeSnakebar.bind(this);
   }
   hendalFormateCheng(e) {
-    this.setState({format: e.target.value, open: true}) ;
+    this.setState({format: e.target.value, open: true});
     this.props.hendalCheng(this.state.format);
   }
   closeSnakebar() {
@@ -28,7 +29,7 @@ export class Navbar extends Component {
     return (
       <header className="Navbar">
         <div className="logo">
-          <a href="#"> Color Palette </a>
+          <Link to="/">Color Palette </Link>
         </div>
         <div className="slider-container">
           <span className="level">level {level}</span>

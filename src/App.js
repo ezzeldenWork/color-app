@@ -1,19 +1,20 @@
 import React, {Component} from "react";
 import Palette from "./Palette";
 import seedColors from "./seedColors";
+import PaltteList from "./PaltteList";
 import {genetatrPalette} from "./colorHelpers";
 import {Route, Switch} from "react-router";
 
 export class App extends Component {
   findPaltte(id) {
-   return seedColors.find(function (palette) {
+    return seedColors.find(function (palette) {
       return palette.id === id;
     });
   }
   render() {
     return (
       <Switch>
-        <Route exact path="/" />
+        <Route exact path="/" render={() => <PaltteList palttes={seedColors}/>} />
         <Route
           exact
           path="/palette/:id"
