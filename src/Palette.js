@@ -17,13 +17,12 @@ export class Palette extends Component {
 
   hendalFormat(val) {
     this.setState({format: val});
-  
   }
   render() {
-    const {colors} = this.props.palette;
+    const {colors, paletteName, emoji} = this.props.palette;
     const {level, format} = this.state;
     const colorBoxs = colors[level].map((color) => (
-      <ColorBox background={color[format]} name={color.name} step={100} />
+      <ColorBox background={color[format]} name={color.name} step={100} key={color.id} />
     ));
 
     return (
@@ -34,6 +33,10 @@ export class Palette extends Component {
           hendalCheng={this.hendalFormat}
         />
         <div className="palette-colors">{colorBoxs}</div>
+        <footer className="palette-footer">
+          {paletteName}
+          <span className="emoji">{emoji}</span>
+        </footer>
       </div>
     );
   }

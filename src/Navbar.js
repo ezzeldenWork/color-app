@@ -26,7 +26,7 @@ export class Navbar extends Component {
     const {level, chengeLevel, hendalCheng} = this.props;
     const {format} = this.state;
     return (
-      <hearder className="Navbar">
+      <header className="Navbar">
         <div className="logo">
           <a href="#"> Color Palette </a>
         </div>
@@ -73,7 +73,7 @@ export class Navbar extends Component {
             </IconButton>,
           ]}
         />
-      </hearder>
+      </header>
     );
   }
 }

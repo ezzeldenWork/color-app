@@ -3,5 +3,18 @@
 }
 
 .palette-colors {
-  height: 90%;
+  height: 89%;
+}
+.palette-footer{
+  background-color: #fff;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-weight: bold;
+  
+}
+.emoji{
+  font-size: 1rem;
+  margin: 0 1rem;
 }
