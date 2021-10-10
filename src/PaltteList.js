@@ -7,7 +7,7 @@ import {withStyles} from "@material-ui/styles";
 const styles = {
   root: {
     backgroundColor: "#00f",
-    height: "100%",
+    height: "100vh",
     display: "flex",
     justifyContent: "center",
     alignItems: "flex-start",
@@ -35,6 +35,13 @@ const styles = {
   },
 };
 export class PaltteList extends Component {
+
+
+  goToPalette(id) {
+    this.props.history.push(`/palette/${id}`)
+  }
+
+
   render() {
     const {palttes, classes} = this.props;
     return (
@@ -44,8 +51,8 @@ export class PaltteList extends Component {
             <h1>React Color</h1>
           </div>
           <div className={classes.palettes}>
-            {palttes.map((paletteMap) => (
-              <MiniPalette {...paletteMap} />
+            {palttes.map((paletteMap) => ( 
+              <MiniPalette {...paletteMap} handleClcik={() => this.goToPalette(paletteMap.id )} />
             ))}
           </div>
         </div>
