@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import Palette from "./Palette";
 import seedColors from "./seedColors";
 import PaltteList from "./PaltteList";
+import SingleColorPalette from "./singleColorPalette";
 import {genetatrPalette} from "./colorHelpers";
 import {Route, Switch} from "react-router";
 
@@ -18,7 +19,7 @@ export class App extends Component {
           exact
           path="/"
           render={(routeProps) => (
-            <PaltteList palttes={seedColors} {...routeProps}   />
+            <PaltteList palttes={seedColors} {...routeProps} />
           )}
         />
         <Route
@@ -31,6 +32,10 @@ export class App extends Component {
               )}
             />
           )}
+        />
+        <Route
+          to="/palette/:paletteId/:colorId"
+          render={() => <SingleColorPalette />}
         />
       </Switch>
       // <div>
