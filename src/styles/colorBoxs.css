@@ -7,8 +7,15 @@
   cursor: pointer;
   margin-bottom: -4.6px;
 }
+.singleColorPalette .colorBoxs {
+  height: 50% !important;
+}
+.go-back.colorBoxs {
+  background-color: #000;
+}
 
-.copy-botton {
+.copy-botton,
+.back-button {
   width: 100px;
   height: 30px;
   position: absolute;
@@ -23,10 +30,14 @@
   background-color: rgba(255, 255, 255, 0.3);
   font-size: 1rem;
   line-height: 30px;
-  color: #fff;
+  color: #fff !important;
   text-transform: uppercase;
+  text-decoration: none;
   border: none;
+}
+.copy-botton{
   opacity: 0;
+
 }
 
 .colorBoxs:hover .copy-botton {
@@ -47,6 +58,10 @@
   font-size: 12px;
 }
 
+.light-text{
+  color: white  ;
+}
+
 .see-more {
   background-color: rgba(255, 255, 255, 0.3);
   position: absolute;
@@ -59,6 +74,9 @@
   text-align: center;
   line-height: 30px;
   text-transform: uppercase;
+}
+.lightColor{
+  color: rgba(0, 0, 0, 0.8) !important;
 }
 
 .copy-overlay {
@@ -103,7 +121,7 @@
   background-color: rgba(255, 255, 255, 0.2);
   width: 100%;
   text-align: center;
-  margin: 0 0 0 ;
+  margin: 0 0 0;
   padding: 1rem;
   text-transform: uppercase;
 }

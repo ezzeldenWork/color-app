@@ -23,8 +23,14 @@ const styles = {
   nav: {
     width: "100%",
     display: "flex",
+    alignItems: "center",
     justifyContent: "space-between",
     color: "#fff",
+    "& a" : {
+      color: "#fff",
+      fontSize: "1rem",
+      textDecoration:"none"
+    }
   },
   palettes: {
     boxSizing: "border-box",
@@ -35,12 +41,9 @@ const styles = {
   },
 };
 export class PaltteList extends Component {
-
-
   goToPalette(id) {
-    this.props.history.push(`/palette/${id}`)
+    this.props.history.push(`/palette/${id}`);
   }
-
 
   render() {
     const {palttes, classes} = this.props;
@@ -49,10 +52,14 @@ export class PaltteList extends Component {
         <div className={classes.container}>
           <div className={classes.nav}>
             <h1>React Color</h1>
+            <Link to="/palette/new" > New Palette </Link> 
           </div>
           <div className={classes.palettes}>
-            {palttes.map((paletteMap) => ( 
-              <MiniPalette {...paletteMap} handleClcik={() => this.goToPalette(paletteMap.id )} />
+            {palttes.map((paletteMap) => (
+              <MiniPalette
+                {...paletteMap}
+                handleClcik={() => this.goToPalette(paletteMap.id)}
+              />
             ))}
           </div>
         </div>

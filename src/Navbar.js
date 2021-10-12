@@ -7,7 +7,7 @@ import IconButton from "@material-ui/core/IconButton";
 
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-import "./Navbar.css";
+import "./styles/Navbar.css";
 import {Link} from "react-router-dom";
 export class Navbar extends Component {
   constructor(props) {
@@ -24,16 +24,18 @@ export class Navbar extends Component {
     this.setState({open: false});
   }
   render() {
-    const {level, chengeLevel, hendalCheng} = this.props;
+    const {level, chengeLevel, hendalCheng, ShowSlider} = this.props;
     const {format} = this.state;
     return (
       <header className="Navbar">
         <div className="logo">
           <Link to="/">Color Palette </Link>
         </div>
+        {ShowSlider && (
         <div className="slider-container">
           <span className="level">level {level}</span>
-          <div className="slider">
+        
+            <div className="slider">
             <Slider
               defaultValue={level}
               min={100}
@@ -43,6 +45,7 @@ export class Navbar extends Component {
             />
           </div>
         </div>
+         )}
         <div className="select-container">
           <Select value={format} onChange={this.hendalFormateCheng}>
             <MenuItem value="hex">HAX - #ffffff</MenuItem>
