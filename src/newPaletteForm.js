@@ -12,6 +12,8 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import {ChromePicker} from "react-color";
 import {Button} from "@material-ui/core";
+import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
+import DraggaleColorBox from "./DraggaleColorBox";
 
 const drawerWidth = 400;
 
@@ -57,6 +59,7 @@ const styles = (theme) => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
+    height: "calc(100vh - 62px)",
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -100,7 +103,6 @@ export class newPaletteForm extends Component {
   addNewColor() {
     this.setState({colors: [...this.state.colors, this.state.currntColor]});
   }
-  
 
   render() {
     const {classes} = this.props;
@@ -157,6 +159,9 @@ export class newPaletteForm extends Component {
             color={this.state.currntColor}
             onChangeComplete={this.updateCurrentColro}
           />
+          <ValidatorForm>
+            <TextValidator   />
+          </ValidatorForm>
           <Button
             variant="contained"
             color="primary"
@@ -173,14 +178,9 @@ export class newPaletteForm extends Component {
         >
           <div className={classes.drawerHeader} />
 
-
-          <ul>
-            {this.state.colors.map(color => (
-              <li style={{backgroundColor: color}}>{color}</li>
-            ))}
-          </ul>
-
-
+          {this.state.colors.map((color) => (
+            <DraggaleColorBox color={color} />
+          ))}
         </main>
       </div>
     );
