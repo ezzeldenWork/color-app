@@ -13,6 +13,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import {ChromePicker} from "react-color";
 import {Button} from "@material-ui/core";
 import DraggaleColorBox from "./DraggaleColorBox";
+import TextField from "@material-ui/core/TextField";
 
 const drawerWidth = 400;
 
@@ -80,10 +81,12 @@ export class newPaletteForm extends Component {
     this.state = {
       open: true,
       currntColor: "red",
-      colors: ["red", "blue", "#000"],
+      newName: "",
+      colors: [],
     };
     this.updateCurrentColro = this.updateCurrentColro.bind(this);
     this.addNewColor = this.addNewColor.bind(this);
+    this.newNameChenge = this.newNameChenge.bind(this);
   }
 
   updateCurrentColro(newColor) {
@@ -99,8 +102,13 @@ export class newPaletteForm extends Component {
     this.setState({open: false});
   };
 
-  addNewColor() {
-    this.setState({colors: [...this.state.colors, this.state.currntColor]});
+  addNewColor(e) {
+    e.preventDefault();
+    const newColor = {color: this.state.currntColor, name: this.state.newName};
+    this.setState({colors: [...this.state.colors, newColor], newName: ""});
+  }
+  newNameChenge(val) {
+    this.setState({newName: val.target.value});
   }
 
   render() {
@@ -158,14 +166,23 @@ export class newPaletteForm extends Component {
             color={this.state.currntColor}
             onChangeComplete={this.updateCurrentColro}
           />
-          <Button
-            variant="contained"
-            color="primary"
-            style={{backgroundColor: this.state.currntColor}}
-            onClick={this.addNewColor}
-          >
-            Add Color
-          </Button>
+          <form onSubmit={this.addNewColor} autoComplete="off">
+            <TextField
+              id="standard-basic"
+              label="Standard"
+              value={this.state.newName}
+              onChange={this.newNameChenge}
+              required
+            />
+            <Button
+              variant="contained"
+              type="submit "
+              color="primary"
+              style={{backgroundColor: this.state.currntColor}}
+            >
+              Add Color
+            </Button>
+          </form>
         </Drawer>
         <main
           className={classNames(classes.content, {
@@ -175,7 +192,7 @@ export class newPaletteForm extends Component {
           <div className={classes.drawerHeader} />
 
           {this.state.colors.map((color) => (
-            <DraggaleColorBox color={color} />
+            <DraggaleColorBox color={color.color} name={color.name} />
           ))}
         </main>
       </div>
