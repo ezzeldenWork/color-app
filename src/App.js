@@ -8,15 +8,32 @@ import {Route, Switch} from "react-router";
 import NewPaletteForm from "./newPaletteForm";
 
 export class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {palette: seedColors};
+    this.savePalette = this.savePalette.bind(this);
+    this.findPaltte = this.findPaltte.bind(this);
+  }
   findPaltte(id) {
-    return seedColors.find(function (palette) {
+    return this.state.palette.find(function (palette) {
       return palette.id === id;
     });
   }
+
+  savePalette(newPalette) {
+    this.setState({palette: [...this.state.palette, newPalette]})
+  }
+
   render() {
     return (
       <Switch>
-        <Route exact path="/palette/new" render={() => <NewPaletteForm />} />
+        <Route
+          exact
+          path="/palette/new"
+          render={(routeProps) => (
+            <NewPaletteForm savePalette={this.savePalette} {...routeProps} />
+          )}
+        />
         <Route
           exact
           path="/palette/:paletteId/:colorId"
@@ -33,7 +50,7 @@ export class App extends Component {
           exact
           path="/"
           render={(routeProps) => (
-            <PaltteList palttes={seedColors} {...routeProps} />
+            <PaltteList palttes={this.state.palette} {...routeProps} />
           )}
         />
         <Route
