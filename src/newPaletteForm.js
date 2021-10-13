@@ -12,7 +12,6 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import {ChromePicker} from "react-color";
 import {Button} from "@material-ui/core";
-import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import DraggaleColorBox from "./DraggaleColorBox";
 
 const drawerWidth = 400;
@@ -159,9 +158,6 @@ export class newPaletteForm extends Component {
             color={this.state.currntColor}
             onChangeComplete={this.updateCurrentColro}
           />
-          <ValidatorForm>
-            <TextValidator   />
-          </ValidatorForm>
           <Button
             variant="contained"
             color="primary"
